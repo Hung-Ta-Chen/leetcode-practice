@@ -13,9 +13,10 @@ public:
                 back += 1;  //BACK move forward one
                 max_len = max(max_len, static_cast<int>(back - front));
             }
-            else{     /*char in table => repeat
-                        move FRONT forward by one char and remove it from table every time 
-                        until the current char is no longer in the table*/
+            else{     
+                /*char in table => repeat
+                  move FRONT forward by one char and remove it from table every time 
+                  until the current char is no longer in the table*/
                 char_table.erase(*front);
                 front += 1;
             }
