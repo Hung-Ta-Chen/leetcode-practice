@@ -5,7 +5,7 @@ public:
              back = s.begin();
  
         unordered_map<char, string::iterator> char_table;   //Save the position of char in table this time (vs SlideWin1)
-                                                            //so that FORWARD won't have to move char by char
+                                                            //so that FRONT won't have to move char by char
         int max_len = 0;
         
         while(front < s.end() && back < s.end()){   
@@ -23,7 +23,7 @@ public:
                     max_len = max(max_len, static_cast<int>(back - front));
                 }
                 else{                              //Repeat happens 
-                                                   //=> FORWARD move forward to the next char of the repeated char 
+                                                   //=> FRONT move forward to the next char of the repeated char 
                     front = char_table[*back] + 1;
                 }
             }
