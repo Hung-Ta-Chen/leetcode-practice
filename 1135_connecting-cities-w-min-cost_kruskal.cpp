@@ -38,6 +38,7 @@ public:
         if(parent[node-1] == node)
             return node;
         else{
+            // Use path compression to move the intermediate nodes aw the child of the parent
             parent[node-1] = find(parent, parent[node-1]);
             return parent[node-1];
         }            
