@@ -1,3 +1,6 @@
+/*
+注意mid為inflection point的部分
+*/
 class Solution {
 public:
     int findMin(vector<int>& nums) {
