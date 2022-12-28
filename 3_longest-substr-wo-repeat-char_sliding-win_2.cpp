@@ -1,34 +1,18 @@
+/*
+Use a hashmap to record the last index of a character
+*/
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        auto front = s.begin(),
-             back = s.begin();
- 
-        unordered_map<char, string::iterator> char_table;   //Save the position of char in table this time (vs SlideWin1)
-                                                            //so that FRONT won't have to move char by char
+        map<char, int> char_pos; // To record the last index of characters in substring
         int max_len = 0;
-        
-        while(front < s.end() && back < s.end()){   
-            if(char_table.find(*back) == char_table.end()){  //When the current char is not in the table
-                char_table.insert(pair<char, string::iterator>(*back, back));
-                back += 1;
-                max_len = max(max_len, static_cast<int>(back - front));
-            }
-            else{        //When the current char is in the table   
-                if(char_table[*back] < front){     //The position of repeat char is before FORWARD
-                                                   //=> the repeat does not happen in Slide Window
-                                                   //=> BACK can keep moving
-                    char_table[*back] = back;
-                    back += 1;
-                    max_len = max(max_len, static_cast<int>(back - front));
-                }
-                else{                              //Repeat happens 
-                                                   //=> FRONT move forward to the next char of the repeated char 
-                    front = char_table[*back] + 1;
-                }
-            }
+        int left, right;
+        for(left = 0, right = 0; right < s.size(); right++){
+            // We need max here because we don't want left to go backward when encountering a previously recorded character
+            if(char_pos.find(s[right]) != char_pos.end()) left = max(left, char_pos[s[right]] + 1);
+            max_len = max(max_len, right - left + 1);
+            char_pos[s[right]] = right;
         }
-        
         return max_len;
     }
 };
