@@ -1,3 +1,6 @@
+/*
+We can also start from 0 houses (dp[0]=0) for better generalization
+*/
 class Solution {
 public:
     int rob(vector<int>& nums) {
