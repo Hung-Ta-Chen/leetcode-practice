@@ -1,3 +1,7 @@
+/*
+First we initialize the memo with INT_MAX
+we start from the right side of the array and record the min number of steps from each position.
+*/
 class Solution {
 public:
     int jump(vector<int>& nums) {
