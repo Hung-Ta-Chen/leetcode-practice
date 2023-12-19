@@ -35,8 +35,7 @@ class Solution:
             # Locate the tail of the group
             group_tail = group_head
             for i in range(k-1):
-                group_tail = group_tail.next
-                if group_tail == None:
+                if (group_tail := group_tail.next) == None:
                     # If the rest of the nodes cannot form a group
                     # don't reverse it
                     prev_group_tail.next = group_head
